@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Test HunRoAKF v0.01 (RO 4th Official Logic)</title>
 <style>
 @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
@@ -394,7 +394,12 @@ body.game-paused-anim *,body.game-paused-anim{animation-play-state:paused !impor
 .skill-select-card .select-desc strong { color:#f1c40f; }
 
 *:hover { filter: none !important; }
+body {
+    overflow: hidden;
+    touch-action: none;
+}
 </style>
+
 </head>
 <body>
 <div id="game-container">
@@ -4657,6 +4662,28 @@ function syncAllSkillCardColors() {
     });
 }
 setInterval(syncAllSkillCardColors, 100);
+function autoScaleGame() {
+    const container = document.getElementById('game-container');
+    if (!container) return;
+
+    const winW = window.innerWidth;
+    const winH = window.innerHeight;
+
+    const scale = Math.min(winW / 1920, winH / 1080);
+
+    container.style.transform = `scale(${scale})`;
+    container.style.transformOrigin = 'top left';
+
+    const scaledW = 1920 * scale;
+    const scaledH = 1080 * scale;
+    container.style.marginLeft = `${(winW - scaledW) / 2}px`;
+    container.style.marginTop = `${(winH - scaledH) / 2}px`;
+}
+
+window.addEventListener('resize', autoScaleGame);
+window.addEventListener('orientationchange', autoScaleGame);
+document.addEventListener('DOMContentLoaded', autoScaleGame);
+autoScaleGame();
 </script>
 </body>
 </html>
