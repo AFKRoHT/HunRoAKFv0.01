@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Test HunRoAKF v0.01 (RO 4th Official Logic)</title>
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
 @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
 *{box-sizing:border-box;user-select:none;-webkit-user-select:none;font-family:'Verdana',sans-serif;font-weight:bold;font-size:33px !important;}
@@ -983,7 +986,23 @@ body {
 <div class="status-row"><span>恐怖抗性:</span><span id="modal-res-fear" style="color:#f1c40f;margin-left:20px;">0 %</span></div>
 </div>
 </div>
-
+function autoScaleGame() {
+    const container = document.getElementById('game-container');
+    if (!container) return;
+    const winW = window.innerWidth;
+    const winH = window.innerHeight;
+    const scale = Math.min(winW / 1920, winH / 1080);
+    container.style.transform = `scale(${scale})`;
+    container.style.transformOrigin = 'top left';
+    const scaledW = 1920 * scale;
+    const scaledH = 1080 * scale;
+    container.style.marginLeft = `${(winW - scaledW) / 2}px`;
+    container.style.marginTop = `${(winH - scaledH) / 2}px`;
+}
+window.addEventListener('resize', autoScaleGame);
+window.addEventListener('orientationchange', autoScaleGame);
+document.addEventListener('DOMContentLoaded', autoScaleGame);
+autoScaleGame();
 <script>
 /* ============ 音效與 BGM 系統 ============ */
 const soundPaths = {
