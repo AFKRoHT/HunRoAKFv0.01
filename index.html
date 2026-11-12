@@ -91,15 +91,13 @@ body{margin:0;padding:0;width:1920px;height:1080px;overflow:hidden;background-co
 }
 
 #village-btn-container {
-    position: absolute; left: 1440px; bottom: 102px; width: 465px; height: 72px;
+    position: absolute; left: 965px; top: 183px; width: 465px; height: 72px;
     border-radius: 9px; box-shadow: inset 0 2px 5px rgba(255,255,255,0.3), 0 6px 9px rgba(0,0,0,0.4);
     display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 71;
-    color: #fff; font-size: 38px !important; letter-spacing: 4px;
+    color: #333; font-size: 38px !important; letter-spacing: 4px; background: #fff; border: 2px solid #ccc;
     transition: filter 0.15s;
 }
 #village-btn-container:active { filter: brightness(0.85); box-shadow: inset 0 4px 12px rgba(0,0,0,0.5); }
-#village-btn-container.red { background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); border: 2px solid #e74c3c; }
-#village-btn-container.green { background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); border: 2px solid #2ecc71; }
 
 #ui-10{position:absolute;left:490px;bottom:15px;width:max-content;min-width:465px;max-width:900px;min-height:72px;max-height:450px;height:auto;background:rgba(10,18,26,0.9);backdrop-filter:blur(8px);border:2px solid #ff66b2;border-radius:9px;box-shadow:inset 0 2px 5px rgba(255,255,255,0.3),0 6px 9px rgba(0,0,0,0.4);display:flex;flex-direction:column;justify-content:flex-end;padding:6px 18px;color:#ffffff;pointer-events:auto;z-index:75;overflow:hidden;transition:max-height 0.2s;cursor:pointer;}
 #ui-11{position:absolute;left:965px;bottom:15px;width:max-content;min-width:465px;max-width:900px;min-height:72px;max-height:450px;height:auto;background:rgba(10,18,26,0.9);backdrop-filter:blur(8px);border:2px solid #ff66b2;border-radius:9px;box-shadow:inset 0 2px 5px rgba(255,255,255,0.3),0 6px 9px rgba(0,0,0,0.4);display:flex;flex-direction:column;justify-content:flex-end;padding:6px 18px;color:#ffffff;pointer-events:auto;z-index:80;overflow:hidden;transition:max-height 0.2s;cursor:pointer;}
@@ -240,10 +238,11 @@ body{margin:0;padding:0;width:1920px;height:1080px;overflow:hidden;background-co
 .mob-levelup-float-text { position:absolute; width:200px; margin-left:-100px; text-align:center; line-height:1.2; pointer-events:none; z-index:30; text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000,0px -2px 0 #000,0px 2px 0 #000,-2px 0px 0 #000,2px 0px 0 #000,0 0 5px #000; transition: top 0.05s linear, left 0.05s linear; }
 
 body.game-paused-anim *,body.game-paused-anim{animation-play-state:paused !important}
+body.game-paused-anim .monster { opacity: 0.5; filter: grayscale(1) blur(1px); }
 @keyframes whiteShieldGlow{0%{filter:drop-shadow(0 0 3px rgba(255,255,255,0.3))}50%{filter:drop-shadow(0 0 12px rgba(255,255,255,0.45)) brightness(1.05)}100%{filter:drop-shadow(0 0 3px rgba(255,255,255,0.3))}}
 .shield-white-glow{animation:whiteShieldGlow 1.2s infinite !important}
 
-#ui-bag-panel{position:absolute;left:965px;bottom:102px;width:max-content;height:max-content;background:rgba(15,23,32,0.92);backdrop-filter:blur(8px);border:3px solid rgba(255,255,255,0.3);border-radius:15px;padding:15px;z-index:70;display:none;flex-direction:column;box-shadow:0 12px 24px rgba(0,0,0,0.6);}
+#ui-bag-panel{position:absolute;left:15px;bottom:102px;width:max-content;height:max-content;background:rgba(15,23,32,0.92);backdrop-filter:blur(8px);border:3px solid rgba(255,255,255,0.3);border-radius:15px;padding:15px;z-index:70;display:none;flex-direction:column;box-shadow:0 12px 24px rgba(0,0,0,0.6);}
 .bag-tabs{display:flex;gap:15px;margin-bottom:15px;}
 .bag-tab-btn{flex:1;height:60px;border-radius:9px;background:rgba(52,152,219,0.4);border:2px solid rgba(255,255,255,0.4);color:#fff;cursor:pointer;text-align:center;line-height:56px;transition:background 0.2s;}
 .bag-tab-btn.active{background:rgba(52,152,219,0.9);border-color:#fff;}
@@ -253,7 +252,7 @@ body.game-paused-anim *,body.game-paused-anim{animation-play-state:paused !impor
 .bag-slot.filled{background-size:100% 100%;background-position:center;background-repeat:no-repeat;cursor:pointer;border-style:solid;opacity:1;}
 .bag-item-count{position:absolute;bottom:2px;right:4px;color:#fff;pointer-events:none;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000,0 0 4px #000;}
 
-#warehouse-panel{position:absolute;left:965px;bottom:550px;width:max-content;height:max-content;background:rgba(252, 243, 207, 0.95);backdrop-filter:blur(8px);border:3px solid #d4ac0d;border-radius:15px;padding:15px;z-index:71;display:none;flex-direction:column;box-shadow:0 12px 24px rgba(0,0,0,0.6);}
+#warehouse-panel{position:absolute;left:15px;bottom:550px;width:max-content;height:max-content;background:rgba(252, 243, 207, 0.95);backdrop-filter:blur(8px);border:3px solid #d4ac0d;border-radius:15px;padding:15px;z-index:71;display:none;flex-direction:column;box-shadow:0 12px 24px rgba(0,0,0,0.6);}
 .warehouse-title {text-align: center; color: #7b241c; margin-bottom: 15px; border-bottom: 2px solid rgba(123, 36, 28, 0.2); padding-bottom: 5px;}
 #warehouse-panel .bag-tabs .bag-tab-btn {background: rgba(212, 172, 13, 0.3); border-color: #d4ac0d; color: #7b241c;}
 #warehouse-panel .bag-tabs .bag-tab-btn.active {background: #d4ac0d; border-color: #7b241c; color: #fff;}
@@ -396,11 +395,45 @@ body.game-paused-anim *,body.game-paused-anim{animation-play-state:paused !impor
 .skill-select-card .select-desc { color:#fff; font-size:28px !important; text-align:left; line-height:1.8; white-space:pre-wrap; }
 .skill-select-card .select-desc strong { color:#f1c40f; }
 
+/* 重骰按鈕 */
+.reroll-btn {
+    position: absolute;
+    right: -110px;
+    top: 0;
+    width: 90px;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.2s;
+    box-shadow: 0 0 15px rgba(255,255,255,0.2) inset;
+}
+.reroll-btn:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 20px rgba(255,255,255,0.5) inset;
+}
+.reroll-btn:active {
+    transform: scale(0.95);
+}
+.reroll-btn.disabled {
+    pointer-events: none;
+    filter: grayscale(1) brightness(0.5);
+    opacity: 0.5;
+}
+
 *:hover { filter: none !important; }
 body {
     overflow: hidden;
     touch-action: none;
 }
+
+/* 屬性點分配遮罩 */
+#stat-alloc-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:300; display:none; }
 </style>
 
 </head>
@@ -408,6 +441,14 @@ body {
 <div id="game-container">
 <div id="fade-overlay"></div>
 <div id="game-floor"></div>
+
+<!-- 屬性點分配 UI -->
+<div id="stat-alloc-overlay">
+    <div style="position:absolute; left:15px; top:15px; display:flex; flex-direction:column; gap:15px;">
+        <div style="color:#fff; font-size:36px !important; text-shadow:0 0 10px #ff66b2; margin-bottom:10px;">能力點分配 (剩餘額度: <span id="stat-points-remain" style="color:#f1c40f;">0</span>)</div>
+        <div id="stat-alloc-list" style="display:flex; flex-direction:column; gap:15px;"></div>
+    </div>
+</div>
 
 <div id="ui-1" class="bar-container" onclick="toggleMonsterQuickInfo(event)">
     <div class="bar-bg"></div>
@@ -986,23 +1027,6 @@ body {
 <div class="status-row"><span>恐怖抗性:</span><span id="modal-res-fear" style="color:#f1c40f;margin-left:20px;">0 %</span></div>
 </div>
 </div>
-function autoScaleGame() {
-    const container = document.getElementById('game-container');
-    if (!container) return;
-    const winW = window.innerWidth;
-    const winH = window.innerHeight;
-    const scale = Math.min(winW / 1920, winH / 1080);
-    container.style.transform = `scale(${scale})`;
-    container.style.transformOrigin = 'top left';
-    const scaledW = 1920 * scale;
-    const scaledH = 1080 * scale;
-    container.style.marginLeft = `${(winW - scaledW) / 2}px`;
-    container.style.marginTop = `${(winH - scaledH) / 2}px`;
-}
-window.addEventListener('resize', autoScaleGame);
-window.addEventListener('orientationchange', autoScaleGame);
-document.addEventListener('DOMContentLoaded', autoScaleGame);
-autoScaleGame();
 <script>
 /* ============ 音效與 BGM 系統 ============ */
 const soundPaths = {
@@ -1018,8 +1042,8 @@ const soundPaths = {
 const soundPools = {};
 const SOUND_POOL_SIZE = 10;
 let isSoundOn = true;
-let currentSfxVolume = 0.09;
-let currentBgmVolume = 0.15;
+let currentSfxVolume = 0.06;
+let currentBgmVolume = 0.09;
 
 const bgmAudio = new Audio('./HunSound/03.mp3');
 bgmAudio.loop = true;
@@ -1035,10 +1059,10 @@ function initSounds() {
         }
     }
     bgmAudio.volume = currentBgmVolume;
-    document.getElementById('music-vol-slider').value = 15;
-    document.getElementById('music-vol-pct').innerText = '15%';
-    document.getElementById('sfx-vol-slider').value = 9;
-    document.getElementById('sfx-vol-pct').innerText = '9%';
+    document.getElementById('music-vol-slider').value = 9;
+    document.getElementById('music-vol-pct').innerText = '9%';
+    document.getElementById('sfx-vol-slider').value = 6;
+    document.getElementById('sfx-vol-pct').innerText = '6%';
     updateSoundButtonIcon();
 }
 function playSound(soundKey) {
@@ -1078,10 +1102,15 @@ function toggleVolumePanel(e) {
     if (isVolumePanelOpen && btn) {
         const containerRect = document.getElementById('game-container').getBoundingClientRect();
         const btnRect = btn.getBoundingClientRect();
-        panel.style.left = (btnRect.left - containerRect.left) + 'px';
-        const topOffset = (btnRect.top - containerRect.top) - panel.offsetHeight - 15;
-        if (topOffset < 10) { panel.style.top = (btnRect.bottom - containerRect.top + 15) + 'px'; }
-        else { panel.style.top = topOffset + 'px'; }
+        // 右方間隔 15px
+        panel.style.left = (btnRect.right - containerRect.left + 15) + 'px';
+        // 垂直對齊按鈕頂端
+        let topPos = (btnRect.top - containerRect.top);
+        // 如果放右邊會超出畫面右側，就改放左邊
+        if (parseFloat(panel.style.left) + panel.offsetWidth > 1920 - 10) {
+            panel.style.left = (btnRect.left - containerRect.left - panel.offsetWidth - 15) + 'px';
+        }
+        panel.style.top = topPos + 'px';
     }
     updateSoundButtonIcon();
 }
@@ -1135,7 +1164,19 @@ let pendingSkillSelections = 0;
 let skillSelectOpen = false;
 const skillPlusValue = { '46': 15, '47': 15, '148': 15, '45': 15, '43': 30 };
 const skillRarityColor = { 1: '#ffffff', 2: '#3498db', 3: '#2ecc71' };
-const skillRarityName  = { 1: '普通', 2: '稀有', 3: '傳說' };
+
+// 屬性點系統變數
+let statPoints = 0;
+let statCost = { str: 1, agi: 1, vit: 1, int: 1, luk: 1 };
+const statList = ['str', 'agi', 'vit', 'int', 'luk'];
+const statLabels = { str: 'STR', agi: 'AGI', vit: 'VIT', int: 'INT', luk: 'LUK' };
+const statDescs = {
+    str: '負重能力、素質ATK',
+    agi: 'ASPD、DEF、出血睡眠著火抗性',
+    vit: 'MHP、DEF、MDef、HP道具回復量、暈眩中毒抗性',
+    int: 'MDef、MSP、SP道具回復量、沉默黑暗恐怖抗性',
+    luk: '完全迴避、爆擊迴避、詛咒混亂抗性、恐怖著火抗性、素質ATK、CRI'
+};
 
 function setGameFreeze(state){ HunPrFreeze = state; if(state==="on") document.body.classList.add('game-paused-anim'); else document.body.classList.remove('game-paused-anim'); }
 setGameFreeze("off");
@@ -1572,10 +1613,8 @@ function confirmVillageAction() {
 function handleVillageButtonClick(e) {
     if (e) e.stopPropagation();
     const btn = document.getElementById('village-btn-container');
-    if (btn.classList.contains('red')) {
-        showVillageConfirm('確定要離開村莊嗎？', () => leaveVillage());
-    } else if (btn.classList.contains('green')) {
-        showVillageConfirm('確定要回到村莊嗎？', () => returnToVillage());
+    if (btn.classList.contains('red') || btn.classList.contains('green') || btn.style.background === 'rgb(255, 255, 255)' || btn.style.background === '#fff') {
+        showVillageConfirm('確定出村戰鬥嗎？', () => leaveVillage());
     }
 }
 
@@ -1731,8 +1770,14 @@ function updateRefineMaterialGlow(equipSlot, currentRefine) {
 }
 
 let refineDragGhost = null;
+let refineDragStartX = 0, refineDragStartY = 0;
+let currentRefineDragAnchor = null;
+
 function startRefineMaterialDrag(e, itemId, anchorEl) {
     e.stopPropagation();
+    currentRefineDragAnchor = anchorEl;
+    refineDragStartX = e.clientX;
+    refineDragStartY = e.clientY;
     const info = itemInfo[itemId];
     if(!info || !info.isRefineItem) return;
     dragRefineMaterial = itemId;
@@ -1761,20 +1806,29 @@ function onRefineDragEnd(e) {
         refineDragGhost.remove();
         refineDragGhost = null;
     }
-    const dropZone = document.getElementById('refine-drop-zone');
-    if(!dropZone) return;
-    const rect = dropZone.getBoundingClientRect();
-    if(e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
-        if(dragRefineMaterial) {
-            currentRefineMaterialId = dragRefineMaterial;
-            const info = itemInfo[currentRefineMaterialId];
-            document.getElementById('refine-slot-text').style.display = 'none';
-            const iconDiv = document.getElementById('refine-slot-icon');
-            iconDiv.style.display = 'block';
-            iconDiv.style.backgroundImage = `url('${info.icon}')`;
+    
+    const dist = Math.hypot(e.clientX - refineDragStartX, e.clientY - refineDragStartY);
+    
+    if (dist < 30) {
+        showItemDesc(dragRefineMaterial, 'bagEtc', currentRefineDragAnchor, null);
+    } else {
+        const dropZone = document.getElementById('refine-drop-zone');
+        if(dropZone) {
+            const rect = dropZone.getBoundingClientRect();
+            if(e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                if(dragRefineMaterial) {
+                    currentRefineMaterialId = dragRefineMaterial;
+                    const info = itemInfo[currentRefineMaterialId];
+                    document.getElementById('refine-slot-text').style.display = 'none';
+                    const iconDiv = document.getElementById('refine-slot-icon');
+                    iconDiv.style.display = 'block';
+                    iconDiv.style.backgroundImage = `url('${info.icon}')`;
+                }
+            }
         }
     }
     dragRefineMaterial = null;
+    currentRefineDragAnchor = null;
 }
 
 function executeRefine() {
@@ -2160,10 +2214,12 @@ function usePotion(itemId){
         addSystemLog(`使用${item.name}，解除中毒狀態`,'#2ecc71');
     } else if(item.healHP > 0){
         slot.count--; hpRegenTimer = 9.0; hpRegenRate = item.healHP / 9.0; hpRegenRemaining += item.healHP;
+        HunPrHPTarget = Math.min(HunPrMHP, HunPrHP + hpRegenRemaining);
         potionCooldowns[item.cdType] = POTION_CD_SECONDS; showRedSplashEffect();
         addSystemLog(`使用${item.name}，開始恢復 ${item.healHP} HP（剩餘 ${slot.count}）`,'#ffffff');
     } else if(item.healSP > 0){
         slot.count--; spRegenTimer = 9.0; spRegenRate = item.healSP / 9.0; spRegenRemaining += item.healSP;
+        HunPrSPTarget = Math.min(HunPrMSP, HunPrSP + spRegenRemaining);
         potionCooldowns[item.cdType] = POTION_CD_SECONDS; showBlueSplashEffect();
         addSystemLog(`使用${item.name}，開始恢復 ${item.healSP} SP（剩餘 ${slot.count}）`,'#ffffff');
     }
@@ -2430,7 +2486,7 @@ function preloadAllAssets(){
     for(let i=1;i<=10;i++){ let img = new Image(); img.src = `./HunPr/HunAtkIng/HunAtkIng (${i}).png`; preloadedImages[`atk_${i}`] = img; }
     for(let i=1;i<=6;i++){ let img = new Image(); img.src = `./HunPr/HunWait/HunWait (${i}).png`; preloadedImages[`wait_${i}`] = img; }
     for(let i=1;i<=6;i++){ let img = new Image(); img.src = `./HunPr/HunUseIng/HunUseIng (${i}).png`; preloadedImages[`use_${i}`] = img; }
-    ['./HunMob/HunMA.png','./HunMob/HunMB.png','./HunItemS/HunArrow/Arrow1750.png','./HunItemS/HunArrow/Arrow1750a.png','./HunItemS/HunArrow/Arrow1765.png','./HunItemS/HunArrow/Arrow1765a.png','./HunItemS/HunArrow/Arrow1752.png','./HunItemS/HunArrow/Arrow1752a.png','./HunItemS/HunArrow/Arrow1762.png','./HunItemS/HunArrow/Arrow1762a.png','./HunItemS/HunArrow/Arrow1764.png','./HunItemS/HunArrow/Arrow1764a.png','./HunItemS/HunArrow/Arrow1751.png','./HunItemS/HunArrow/Arrow1751a.png','./HunItemS/HunArrow/Arrow1774.png','./HunItemS/HunArrow/Arrow1774a.png','./HunSkills/46.png','./HunSkills/43.png','./HunSkills/45.png','./HunSkills/44.png','./HunSkills/47.png','./HunSkills/147.png','./HunSkills/148.png','./HunPr/HunDead/HunDead.png','./HunItemS/HunBow/Bow700000.png','./HunItemS/HunHead/Head400137.png','./HunItemS/HunCape/Cape2560.png','./HunItemS/HunBody/Body15009.png','./HunItemS/HunBoots/Boots2456.png','./HunItemS/HunAcc/Acc490123.png','./HunItemS/HunAcc/Acc490125.png','./HunItemS/HunHeal/Item507.png','./HunItemS/HunHeal/Item508.png','./HunItemS/HunHeal/Item509.png','./HunItemS/HunHeal/Item510.png','./HunItemS/HunHeal/Item511.png','./HunItemS/HunHeal/Item514.png','./HunItemS/HunHeal/Item645.png','./HunItemS/HunHeal/Item656.png','./HunItemS/HunHeal/Item657.png','./HunBG/HunBg1.png','./HunBG/HunBg0.png',
+    ['./HunMob/HunMA.gif','./HunMob/HunMB.png','./HunItemS/HunArrow/Arrow1750.png','./HunItemS/HunArrow/Arrow1750a.png','./HunItemS/HunArrow/Arrow1765.png','./HunItemS/HunArrow/Arrow1765a.png','./HunItemS/HunArrow/Arrow1752.png','./HunItemS/HunArrow/Arrow1752a.png','./HunItemS/HunArrow/Arrow1762.png','./HunItemS/HunArrow/Arrow1762a.png','./HunItemS/HunArrow/Arrow1764.png','./HunItemS/HunArrow/Arrow1764a.png','./HunItemS/HunArrow/Arrow1751.png','./HunItemS/HunArrow/Arrow1751a.png','./HunItemS/HunArrow/Arrow1774.png','./HunItemS/HunArrow/Arrow1774a.png','./HunSkills/46.png','./HunSkills/43.png','./HunSkills/45.png','./HunSkills/44.png','./HunSkills/47.png','./HunSkills/147.png','./HunSkills/148.png','./HunPr/HunDead/HunDead.png','./HunItemS/HunBow/Bow700000.png','./HunItemS/HunHead/Head400137.png','./HunItemS/HunCape/Cape2560.png','./HunItemS/HunBody/Body15009.png','./HunItemS/HunBoots/Boots2456.png','./HunItemS/HunAcc/Acc490123.png','./HunItemS/HunAcc/Acc490125.png','./HunItemS/HunHeal/Item507.png','./HunItemS/HunHeal/Item508.png','./HunItemS/HunHeal/Item509.png','./HunItemS/HunHeal/Item510.png','./HunItemS/HunHeal/Item511.png','./HunItemS/HunHeal/Item514.png','./HunItemS/HunHeal/Item645.png','./HunItemS/HunHeal/Item656.png','./HunItemS/HunHeal/Item657.png','./HunBG/HunBg1.png','./HunBG/HunBg0.png',
     './HunItemS/HunItem/Item673.png','./HunItemS/HunItem/Item675.png','./HunItemS/HunItem/Item671.png','./HunItemS/HunItem/Item1000322.png','./HunItemS/HunItem/Item1000324.png','./HunItemS/HunItem/Item1000332.png','./HunItemS/HunItem/Item1000331.png','./HunItemS/HunItem/Item1000334.png','./HunItemS/HunItem/Item1000333.png','./HunItemS/HunItem/Item1000336.png','./HunItemS/HunItem/Item1000335.png','./HunItemS/HunItem/Item1000368.png','./HunItemS/HunItem/Item1000370.png','./HunItemS/HunItem/Item1000369.png','./HunItemS/HunItem/Item1000371.png','./HunItemS/HunItem/Item7177.png','./HunItemS/HunItem/Item7858.png'].forEach((src,idx)=>{ let img = new Image(); img.src = src; preloadedImages[`misc_${idx}`] = img; });
 }
 preloadAllAssets();
@@ -2584,7 +2640,7 @@ function calculatePlayerAtk(){
     const weaponLevel = weaponInfo.equipLevel || 1;
     const refine = slotRefines.weapon || 0;
     const refinementBonus = refine * 8;
-    const variance = 0;
+    const variance = Math.floor(baseWeaponDamage * (Math.random() * 0.06 - 0.03));
     const statBonus = Math.floor(baseWeaponDamage * dex / 200);
     const sizePenalty = 1.0;
 
@@ -3197,8 +3253,8 @@ let chargeEndTime = 0;
 
 /* ============ 箭矢發射 ============ */
 function shootPlayerArrow(){ consumeArrow(); const arrowObj = { x:1485, y:489, speed:30, type:"normal", arrowId:equippedArrow, element:document.createElement('div') }; arrowObj.element.className = 'arrow'; arrowObj.element.style.left = arrowObj.x + 'px'; arrowObj.element.style.top = arrowObj.y + 'px'; arrowObj.element.style.backgroundImage = `url('${getCurrentShootArrowIcon()}')`; container.appendChild(arrowObj.element); arrows.push(arrowObj); }
-function shootSkillFirstArrow(){ consumeArrow(); const arrowObj = { x:1485, y:489, speed:45, type:"skill_first", arrowId:equippedArrow, element:document.createElement('div') }; arrowObj.element.className = 'arrow'; arrowObj.element.style.left = arrowObj.x + 'px'; arrowObj.element.style.top = arrowObj.y + 'px'; arrowObj.element.style.backgroundImage = `url('${getCurrentShootArrowIcon()}')`; arrowObj.element.style.opacity = '0.45'; container.appendChild(arrowObj.element); arrows.push(arrowObj); }
-function shootSkillSecondArrowTo(targetMonster){ const rankColor = getHunSkillsRankColor(HunSkills_46_Rank); const arrowObj = { x:1485, y:489, speed:60, type:"skill_second", arrowId:equippedArrow, targetMonster:targetMonster, element:document.createElement('div') }; arrowObj.element.className = 'arrow'; arrowObj.element.style.left = arrowObj.x + 'px'; arrowObj.element.style.top = arrowObj.y + 'px'; arrowObj.element.style.backgroundImage = `url('${getCurrentShootArrowIcon()}')`; arrowObj.element.style.opacity = '1'; arrowObj.element.style.filter = `drop-shadow(0 0 6px ${rankColor}) drop-shadow(0 0 12px ${rankColor}) brightness(1.3)`; container.appendChild(arrowObj.element); arrows.push(arrowObj); }
+function shootSkillFirstArrow(){ consumeArrow(); const arrowObj = { x:1485, y:489, speed:60, type:"skill_first", arrowId:equippedArrow, element:document.createElement('div') }; arrowObj.element.className = 'arrow'; arrowObj.element.style.left = arrowObj.x + 'px'; arrowObj.element.style.top = arrowObj.y + 'px'; arrowObj.element.style.backgroundImage = `url('${getCurrentShootArrowIcon()}')`; arrowObj.element.style.opacity = '0.45'; container.appendChild(arrowObj.element); arrows.push(arrowObj); }
+function shootSkillSecondArrowTo(targetMonster){ const rankColor = getHunSkillsRankColor(HunSkills_46_Rank); const arrowObj = { x:1485, y:489, speed:75, type:"skill_second", arrowId:equippedArrow, targetMonster:targetMonster, element:document.createElement('div') }; arrowObj.element.className = 'arrow'; arrowObj.element.style.left = arrowObj.x + 'px'; arrowObj.element.style.top = arrowObj.y + 'px'; arrowObj.element.style.backgroundImage = `url('${getCurrentShootArrowIcon()}')`; arrowObj.element.style.opacity = '1'; arrowObj.element.style.filter = `drop-shadow(0 0 6px ${rankColor}) drop-shadow(0 0 12px ${rankColor}) brightness(1.3)`; container.appendChild(arrowObj.element); arrows.push(arrowObj); }
 function shootArrowRain(){
     consumeArrow();
     const activeMonsters = monsters.filter(m => !m.isDead && m.state !== "delayed" && m.state !== "falling");
@@ -3209,7 +3265,7 @@ function shootArrowRain(){
         targetY = activeMonsters[0].y + 75; 
     }
     const rankColor = getHunSkillsRankColor(HunSkills_47_Rank); const batchId = Date.now();
-    for(let i=0;i<9;i++){
+    for(let i=0;i<6;i++){
         const arrowObj = { x: 1485, y: 489, vx: 0, vy: 0, gravity: 0, speed: 0, type: "arrow_rain", arrowId:equippedArrow, rainBatchId: batchId, hasHit: false, hitMobs: [], element: document.createElement('div') };
         const backDist = Math.random() * 300;
         const tx = Math.max(0, targetX - backDist);
@@ -3370,9 +3426,6 @@ function killMonster(hitMonster, isNormalAttack = false){
     while(HunPrExp >= HunPrMExp && levelUpSafetyCount < 100){
         HunPrExp -= HunPrMExp; HunPrLv++;
         HunPrMExp = Math.pow(HunPrLv + 1, 3);
-        if (HunPrDex < 130) {
-            HunPrDex = Math.min(130, HunPrDex + 3);
-        }
         gainedLevels++;
         HunPrMHP += 30; HunPrHP = HunPrMHP; HunPrMSP += 6; HunPrSP = HunPrMSP;
         levelUpSafetyCount++;
@@ -3382,7 +3435,12 @@ function killMonster(hitMonster, isNormalAttack = false){
         addSystemLog(`升級至 Lv.${HunPrLv} !`, getHunSkillsRankColor(6), true, 6.0);
         addSystemLog(`MHP +${gainedLevels*30}`, "#2ecc71", false, 6.0);
         addSystemLog(`MSP +${gainedLevels*6}`, "#3498db", false, 6.0);
-        addSystemLog(`DEX +${gainedLevels*3}`, "#f1c40f", false, 6.0);
+
+        if ([15, 30, 45, 60].includes(HunPrLv)) {
+            statPoints += HunPrLv / 15;
+            addSystemLog(`獲得能力點額度！`, "#f1c40f", false, 6.0);
+        }
+
         forceUpdateStatsDisplay();
         if (HunPrLv >= nextSkillSelectLevel && HunPrFreeze === "off" && !travelerShopOpen && !skillSelectOpen) {
             while (HunPrLv >= nextSkillSelectLevel) {
@@ -3433,10 +3491,16 @@ function triggerGameOver(){
     
     const vBtn = document.getElementById('village-btn-container');
     if(vBtn) {
-        vBtn.classList.remove('red');
-        vBtn.classList.add('green');
+        vBtn.classList.remove('red', 'green');
         vBtn.innerText = '回到村莊';
+        vBtn.style.background = '';
+        vBtn.style.color = '';
+        vBtn.style.border = '';
+        vBtn.style.left = '1440px';
+        vBtn.style.top = '';
+        vBtn.style.bottom = '102px';
         vBtn.style.display = 'flex';
+        vBtn.classList.add('green');
     }
 }
 
@@ -3555,14 +3619,14 @@ function spawnMonster(){
         if (Math.random() < 0.015 && !travelerAvailable && !travelerShopOpen && !isInVillage) { triggerMysteriousTraveler(); }
         for(let i=0;i<count;i++){
             let isLevelUpMob = (isMobLvUpWave && i === 0);
-            let imgName = './HunMob/HunMA.png';
+            let imgName = './HunMob/HunMA.gif';
             let mobMaxHpVal = Math.round(MobLv * MobRank * 30); 
             let mHardDef = MobLv * MobRank * 0.6;
             let mSoftDef = Math.floor(MobLv * MobRank * 0.9);
             let startX = 150 + Math.random() * 90; let startY = 60 + Math.random() * 30; let targetStopX = 1350;
             let randomizedFallSpeed = 3 + Math.random() * 3; let delayTime = 0.3 + Math.random() * 0.6;
             const monsterObj = {
-                x:startX, y:startY, originalY:450, speed:1.0, fallSpeed:randomizedFallSpeed, delayTimer:delayTime,
+                x:startX, y:startY, originalY:480, speed:1.0, fallSpeed:randomizedFallSpeed, delayTimer:delayTime,
                 MobMaxHp:mobMaxHpVal, MobHp:mobMaxHpVal, pdodgeRate:0.0, MobMaxDp:0, MobDp:0, dpDecayDelayTimer:3.0,
                 MobDef:mHardDef, MobSoftDef:mSoftDef, MobRes:MobLv * MobRank * 6, MobMRes:MobLv * MobRank * 3, MobCriRes: MobRank * 3, MobAtk:Math.round(MobLv * MobRank * 1.8), tier:MobRank,
                 mobLv:MobLv, exp:MobLv * MobLv * MobRank, zeny:MobLv * MobRank * 3, isDead:false, isLevelUpMob:isLevelUpMob,
@@ -4199,15 +4263,43 @@ function initTravelerShopEvents(){
     const buyDialog = document.getElementById('traveler-buy-dialog');
     if(buyDialog){
         buyDialog.addEventListener('pointerdown', (e) => e.stopPropagation());
+        let holdTimer = null;
+        let holdInterval = null;
+        function startHold(action) {
+            action();
+            holdTimer = setTimeout(() => {
+                holdInterval = setInterval(action, 100);
+            }, 500);
+        }
+        function stopHold() {
+            clearTimeout(holdTimer);
+            clearInterval(holdInterval);
+        }
+
         const minusBtn = buyDialog.querySelector('.traveler-minus');
-        if(minusBtn) minusBtn.addEventListener('click', (e) => { e.stopPropagation(); if(travelerBuyQty > 1){ travelerBuyQty--; updateTravelerBuyDialog(); } });
+        if(minusBtn) {
+            minusBtn.addEventListener('pointerdown', (e) => {
+                e.stopPropagation();
+                startHold(() => { if(travelerBuyQty > 1){ travelerBuyQty--; updateTravelerBuyDialog(); } });
+            });
+            minusBtn.addEventListener('pointerup', stopHold);
+            minusBtn.addEventListener('pointerleave', stopHold);
+        }
+        
         const plusBtn = buyDialog.querySelector('.traveler-plus');
-        if(plusBtn) plusBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const item = travelerCurrentBuyItem; if(!item) return;
-            const maxQty = getTravelerBuyLimit(item);
-            if(travelerBuyQty < maxQty){ travelerBuyQty++; updateTravelerBuyDialog(); }
-        });
+        if(plusBtn) {
+            plusBtn.addEventListener('pointerdown', (e) => {
+                e.stopPropagation();
+                startHold(() => {
+                    const item = travelerCurrentBuyItem; if(!item) return;
+                    const maxQty = getTravelerBuyLimit(item);
+                    if(travelerBuyQty < maxQty){ travelerBuyQty++; updateTravelerBuyDialog(); }
+                });
+            });
+            plusBtn.addEventListener('pointerup', stopHold);
+            plusBtn.addEventListener('pointerleave', stopHold);
+        }
+
         const buyBtn = buyDialog.querySelector('.traveler-buy-btn.buy'); if(buyBtn) buyBtn.addEventListener('click', (e) => { e.stopPropagation(); confirmTravelerBuy(); });
         const cancelBtn = buyDialog.querySelector('.traveler-buy-btn.cancel'); if(cancelBtn) cancelBtn.addEventListener('click', (e) => { e.stopPropagation(); closeTravelerBuyDialog(); });
     }
@@ -4263,14 +4355,24 @@ function enterVillage() {
         
         const vBtn = document.getElementById('village-btn-container');
         if(vBtn) {
-            vBtn.classList.remove('green');
-            vBtn.classList.add('red');
-            vBtn.innerText = '離開村莊';
+            vBtn.classList.remove('red', 'green');
+            vBtn.innerText = '普隆德拉草原';
+            vBtn.style.background = '#ffffff';
+            vBtn.style.color = '#333';
+            vBtn.style.border = '2px solid #ccc';
+            vBtn.style.left = '965px';
+            vBtn.style.top = '183px';
+            vBtn.style.bottom = 'auto';
             vBtn.style.display = 'flex';
         }
         
         const whPanel = document.getElementById('warehouse-panel');
-        if(whPanel) whPanel.style.display = 'flex';
+        if(whPanel) { whPanel.style.display = 'flex'; whPanel.style.left = '15px'; whPanel.style.bottom = '550px'; }
+        const bagPanel = document.getElementById('ui-bag-panel');
+        if(bagPanel) { bagPanel.style.display = 'flex'; bagPanel.style.left = '15px'; bagPanel.style.bottom = '102px'; }
+        
+        document.getElementById('ui-9').style.pointerEvents = 'none';
+        document.getElementById('ui-9').style.opacity = '0.5';
         
         switchWarehouseTab('consume');
         updateUI();
@@ -4287,6 +4389,11 @@ function leaveVillage() {
     const _ui9 = document.getElementById('ui-9'); if(_ui9) _ui9.classList.remove('expanded');
     const _ui1 = document.getElementById('ui-1'); if(_ui1) _ui1.classList.remove('expanded');
     const _ui2 = document.getElementById('ui-2'); if(_ui2) _ui2.classList.remove('expanded');
+    
+    document.getElementById('ui-9').style.pointerEvents = 'auto';
+    document.getElementById('ui-9').style.opacity = '1';
+    document.getElementById('warehouse-panel').style.display = 'none';
+    document.getElementById('ui-bag-panel').style.display = 'none';
     
     if (travelerShopOpen) {
         closeTravelerBuyDialog();
@@ -4432,6 +4539,15 @@ function returnToVillage() {
     renderEquipCards();
     switchBagTab('consume');
     
+    // 先清空怪物並解除戰鬥狀態，再轉場
+    monsters.forEach(m => { if(m.element) m.element.remove(); if(m.hpBarElement) m.hpBarElement.remove(); if(m.dpBarElement) m.dpBarElement.remove(); if(m.cdBarElement) m.cdBarElement.remove(); });
+    monsters.length = 0;
+    arrows.forEach(a => { if(a.element) a.element.remove(); });
+    arrows.length = 0;
+    HunPrSTAte = "wait";
+    waitFrameIndex = 1;
+    setPlayerFrame("./HunPr/HunWait/HunWait (1).png");
+    
     enterVillage();
     addSystemLog('回到村莊，請充分做好準備再出發', '#f1c40f', false, 6.0);
 }
@@ -4449,42 +4565,54 @@ function getSkillDisplayText(skillId, plusLv) {
     const info = skillInfo[skillId];
     const name = info.name;
     const plus = skillPlusValue[skillId] || 0;
+
     if (!isLearned) {
         let baseText = '';
         if (skillId === '43') baseText = `Dex +${skills43DexValues[HunSkills_43_Rank] || 10}`;
-        else if (skillId === '44') baseText = `擊退距離 + 30\n機率 9 %\n距離 + 300`;
-        else if (skillId === '45') baseText = `Agi/Dex +${concentrationPercent[HunSkills_45_Rank]}%（持續 180 秒）\nSP - 70`;
-        else if (skillId === '46') baseText = `造成傷害 ${doubleStrafeDmgPercent[HunSkills_46_Rank]}%\nSP - 12`;
-        else if (skillId === '47') baseText = `一次 9 隻箭，每支造成 ${arrowRainDmgPercent[HunSkills_47_Rank]}%\nSP - 15`;
-        else if (skillId === '147') baseText = `普通攻擊擊殺時 6% 機率獲得箭矢`;
-        else if (skillId === '148') baseText = `擊退 600 距離，造成 ${chargeArrowDmgPercent[HunSkills_148_Rank]}%\n詠唱 0.9 秒 / SP - 15`;
-        return { title: name, desc: `學習後效果：\n${baseText}`, isLearn: true, plusLv: 0 };
+        else if (skillId === '44') baseText = `擊退 + ${knockbackBonus[HunSkills_44_Rank]}\n機率 9 %\n距離 + ${HunSkills_44_Rank === 1 ? 300 : HunSkills_44_Rank === 2 ? 450 : 600}`;
+        else if (skillId === '45') baseText = `Agi + ${concentrationPercent[HunSkills_45_Rank]}%\nDex + ${concentrationPercent[HunSkills_45_Rank]}%`;
+        else if (skillId === '46') baseText = `造成傷害 ${doubleStrafeDmgPercent[HunSkills_46_Rank]} %\nSP - 12`;
+        else if (skillId === '47') baseText = `一次性發射 6 隻箭矢\n造成傷害 ${arrowRainDmgPercent[HunSkills_47_Rank]} %\nSP - 15\nCD 0.1`;
+        else if (skillId === '147') baseText = `普通攻擊擊殺怪物時 6% 機率發動技能\n獲得 神之金屬箭矢 (Str × 3) 支\n獲得 特殊箭矢 (Str × 3) 支`;
+        else if (skillId === '148') baseText = `擊退怪物 600 距離\n造成 ${chargeArrowDmgPercent[HunSkills_148_Rank]} %\n詠唱 0.9 秒\nSP - 15`;
+        return { title: name, desc: `${baseText}`, isLearn: true, plusLv: 0 };
     }
-    const totalMult = 1 + (plusLv * plus) / 100;
+
+    const currentPlus = skillPlusLv[skillId] || 0;
+    const futurePlus = currentPlus + (plusLv || 0);
+
+    const calcVal = (base, isPercent) => {
+        const currentVal = base * (1 + (currentPlus * plus) / 100);
+        const futureVal = base * (1 + (futurePlus * plus) / 100);
+        const fmt = (v) => isPercent ? v.toFixed(1) : Math.floor(v);
+        return `${base}${isPercent ? ' %' : ''} > ${fmt(currentVal)}${isPercent ? ' %' : ''} > <strong style="color:#f1c40f;">${fmt(futureVal)}${isPercent ? ' %' : ''}</strong>`;
+    };
+
     if (skillId === '46') {
         const base = doubleStrafeDmgPercent[HunSkills_46_Rank];
-        const newVal = base * totalMult;
-        return { title: name, desc: `追加傷害 +${Math.round(plusLv * plus)}%\n${base}% → <strong>${newVal.toFixed(1)}%</strong>`, isLearn: false, plusLv };
+        return { title: name, desc: `造成傷害 ${calcVal(base, true)}\nSP - 12`, isLearn: false, plusLv };
     }
     if (skillId === '47') {
         const base = arrowRainDmgPercent[HunSkills_47_Rank];
-        const newVal = base * totalMult;
-        return { title: name, desc: `追加傷害 +${Math.round(plusLv * plus)}%\n${base}% → <strong>${newVal.toFixed(1)}%</strong>`, isLearn: false, plusLv };
+        return { title: name, desc: `一次性發射 6 隻箭矢\n造成傷害 ${calcVal(base, true)}\nSP - 15\nCD 0.1`, isLearn: false, plusLv };
     }
     if (skillId === '148') {
         const base = chargeArrowDmgPercent[HunSkills_148_Rank];
-        const newVal = base * totalMult;
-        return { title: name, desc: `追加傷害 +${Math.round(plusLv * plus)}%\n${base}% → <strong>${newVal.toFixed(1)}%</strong>`, isLearn: false, plusLv };
+        return { title: name, desc: `擊退怪物 600 距離\n造成 ${calcVal(base, true)}\n詠唱 0.9 秒\nSP - 15`, isLearn: false, plusLv };
     }
     if (skillId === '45') {
         const base = concentrationPercent[HunSkills_45_Rank];
-        const newVal = base * totalMult;
-        return { title: name, desc: `追加效果 +${Math.round(plusLv * plus)}%\nAgi/Dex +${base}% → <strong>+${newVal.toFixed(1)}%</strong>`, isLearn: false, plusLv };
+        return { title: name, desc: `Agi + ${calcVal(base, true)}\nDex + ${calcVal(base, true)}`, isLearn: false, plusLv };
     }
     if (skillId === '43') {
         const base = skills43DexValues[HunSkills_43_Rank];
-        const newVal = base * totalMult;
-        return { title: name, desc: `追加效果 +${Math.round(plusLv * plus)}%\nDex +${base} → <strong>+${newVal.toFixed(1)}</strong>`, isLearn: false, plusLv };
+        return { title: name, desc: `Dex + ${calcVal(base, false)}`, isLearn: false, plusLv };
+    }
+    if (skillId === '44') {
+        return { title: name, desc: `擊退 + ${knockbackBonus[HunSkills_44_Rank]}\n機率 9 %\n距離 + ${HunSkills_44_Rank === 1 ? 300 : HunSkills_44_Rank === 2 ? 450 : 600}`, isLearn: false, plusLv };
+    }
+    if (skillId === '147') {
+        return { title: name, desc: `普通攻擊擊殺怪物時 6% 機率發動技能\n獲得 神之金屬箭矢 (Str × 3) 支\n獲得 特殊箭矢 (Str × 3) 支`, isLearn: false, plusLv };
     }
     return { title: name, desc: '強化', isLearn: false, plusLv };
 }
@@ -4516,11 +4644,16 @@ function triggerSkillSelection() {
     renderSkillSelectionUI(cards);
 }
 
+let rerolledCards = new Set();
 function renderSkillSelectionUI(cards) {
     const overlay = document.getElementById('skill-select-overlay');
     overlay.innerHTML = '';
     overlay.style.display = 'block';
+    rerolledCards.clear();
+
     const positions = [15, 370, 725];
+    const allSkills = ['43','44','45','46','47','147','148'];
+
     cards.forEach((card, i) => {
         const cardColor = card.rarity === 0 ? '#ffffff' : skillRarityColor[card.rarity];
         const panel = document.createElement('div');
@@ -4528,12 +4661,14 @@ function renderSkillSelectionUI(cards) {
         panel.style.top = positions[i] + 'px';
         panel.style.border = `4px solid ${cardColor}`;
         panel.style.boxShadow = `0 0 40px ${cardColor}, inset 0 0 20px ${cardColor}40`;
+
         const info = skillInfo[card.skillId];
         const text = getSkillDisplayText(card.skillId, card.rarity || 0);
         const rarityLabel = card.rarity === 0 ? '學習新技能' : '';
         const rarityHTML = rarityLabel
             ? `<div class="select-rarity-label" style="color:${cardColor};text-shadow:0 0 12px ${cardColor};">${rarityLabel}</div>`
             : '';
+
         panel.innerHTML = `
             <div class="select-icon" style="background-image:url('${info.icon}');border:3px solid ${cardColor};box-shadow:0 0 24px ${cardColor};"></div>
             <div class="select-info">
@@ -4542,6 +4677,7 @@ function renderSkillSelectionUI(cards) {
                 <div class="select-desc">${text.desc}</div>
             </div>
         `;
+
         panel.onclick = () => {
             applySkillSelection(card);
             overlay.style.display = 'none';
@@ -4550,16 +4686,92 @@ function renderSkillSelectionUI(cards) {
             if (pendingSkillSelections > 0) {
                 triggerSkillSelection();
             } else {
-                setGameFreeze("off");
-                setPauseButtonDisplay(false);
-                updateSkillGrids();
-                renderHotkeyBar('attack');
-                renderHotkeyBar('support');
-                renderHotkeyBar('item');
-                forceUpdateStatsDisplay();
-                addSystemLog('技能選擇完成', '#f1c40f', false, 3.0);
+                if (statPoints > 0) {
+                    openStatAllocUI();
+                } else {
+                    setGameFreeze("off");
+                    setPauseButtonDisplay(false);
+                    updateSkillGrids();
+                    renderHotkeyBar('attack');
+                    renderHotkeyBar('support');
+                    renderHotkeyBar('item');
+                    forceUpdateStatsDisplay();
+                    addSystemLog('技能選擇完成', '#f1c40f', false, 3.0);
+                }
             }
         };
+
+        if (card.rarity !== 0) {
+            const rerollBtn = document.createElement('div');
+            rerollBtn.className = 'reroll-btn';
+            rerollBtn.style.background = `linear-gradient(135deg, ${cardColor}50, ${cardColor}90)`;
+            rerollBtn.style.border = `2px solid ${cardColor}`;
+            rerollBtn.innerHTML = `<span style="font-size:32px !important; margin-bottom:5px;">🔄</span><span style="font-size:24px !important;">重骰</span>`;
+            rerollBtn.onclick = (e) => {
+                e.stopPropagation();
+                if (rerolledCards.has(i)) return;
+
+                const pool = [];
+                for (const skillId of allSkills) {
+                    if ((skillId === '44' || skillId === '147') && skillLearned[skillId]) continue;
+                    pool.push(skillId);
+                }
+                for (let j = pool.length - 1; j > 0; j--) {
+                    const k = Math.floor(Math.random() * (j + 1));
+                    [pool[j], pool[k]] = [pool[k], pool[j]];
+                }
+                let newSkillId = card.skillId;
+                if (pool.length > 1) {
+                    while (newSkillId === card.skillId) {
+                        newSkillId = pool[Math.floor(Math.random() * pool.length)];
+                    }
+                } else if (pool.length === 1) {
+                    newSkillId = pool[0];
+                }
+
+                rerolledCards.add(i);
+                cards[i].skillId = newSkillId;
+                cards[i].rarity = Math.random() < 0.1 ? 3 : (Math.random() < 0.4 ? 2 : 1);
+
+                const newInfo = skillInfo[newSkillId];
+                const newText = getSkillDisplayText(newSkillId, cards[i].rarity);
+                const newColor = skillRarityColor[cards[i].rarity];
+
+                panel.style.border = `4px solid ${newColor}`;
+                panel.style.boxShadow = `0 0 40px ${newColor}, inset 0 0 20px ${newColor}40`;
+                panel.querySelector('.select-icon').style.backgroundImage = `url('${newInfo.icon}')`;
+                panel.querySelector('.select-icon').style.borderColor = newColor;
+                panel.querySelector('.select-icon').style.boxShadow = `0 0 24px ${newColor}`;
+                panel.querySelector('.select-name').style.color = newColor;
+                panel.querySelector('.select-name').innerText = newInfo.name;
+                panel.querySelector('.select-desc').innerHTML = newText.desc;
+
+                rerollBtn.innerHTML = `<span style="font-size:24px !important;">已重骰</span>`;
+                rerollBtn.classList.add('disabled');
+
+                panel.onclick = () => {
+                    applySkillSelection(cards[i]);
+                    overlay.style.display = 'none';
+                    overlay.innerHTML = '';
+                    skillSelectOpen = false;
+                    if (pendingSkillSelections > 0) {
+                        triggerSkillSelection();
+                    } else {
+                        if (statPoints > 0) {
+                            openStatAllocUI();
+                        } else {
+                            setGameFreeze("off");
+                            setPauseButtonDisplay(false);
+                            updateSkillGrids();
+                            renderHotkeyBar('attack'); renderHotkeyBar('support'); renderHotkeyBar('item');
+                            forceUpdateStatsDisplay();
+                            addSystemLog('技能選擇完成', '#f1c40f', false, 3.0);
+                        }
+                    }
+                };
+            };
+            panel.appendChild(rerollBtn);
+        }
         overlay.appendChild(panel);
     });
 }
@@ -4586,6 +4798,108 @@ function applySkillSelection(card) {
     }
 }
 
+/* ============ 屬性點介面 ============ */
+function openStatAllocUI() {
+    if (statPoints <= 0) return;
+    const overlay = document.getElementById('stat-alloc-overlay');
+    overlay.style.display = 'flex';
+    
+    const list = document.getElementById('stat-alloc-list');
+    list.innerHTML = '';
+    statList.forEach(stat => {
+        const win = document.createElement('div');
+        win.className = 'stat-window';
+        win.id = 'stat-win-' + stat;
+        win.style.cssText = 'width:465px; background:rgba(15,23,32,0.95); border:2px solid #ff66b2; border-radius:8px; padding:15px; display:flex; justify-content:space-between; align-items:center;';
+        
+        win.innerHTML = `
+            <div>
+                <div style="font-size:28px; color:#f1c40f;">${statLabels[stat]}</div>
+                <div style="font-size:20px; color:#ccc;">${statDescs[stat]}</div>
+            </div>
+            <div style="text-align:right;">
+                <div style="font-size:24px; color:#fff;">當前: <span class="stat-val">0</span></div>
+                <div style="font-size:18px; color:#ff8a80;">消耗: <span class="stat-cost">1</span> 額度</div>
+                <button class="stat-add-btn" data-stat="${stat}" style="padding:5px 15px; background:#3498db; color:#fff; border:none; border-radius:6px; cursor:pointer; margin-top:5px;">+30</button>
+            </div>
+        `;
+        list.appendChild(win);
+    });
+
+    updateStatAllocUI();
+
+    list.onclick = (e) => {
+        const btn = e.target.closest('.stat-add-btn');
+        if (!btn) return;
+        const stat = btn.dataset.stat;
+        const cost = statCost[stat];
+        if (statPoints < cost) return;
+        
+        if (!confirm(`確定要將 ${statLabels[stat]} 提升 30 點嗎？（將消耗 ${cost} 額度）`)) return;
+        
+        statPoints -= cost;
+        statCost[stat]++;
+        
+        if (stat === 'str') HunPrStr = Math.min(130, HunPrStr + 30);
+        if (stat === 'agi') HunPrAgi = Math.min(130, HunPrAgi + 30);
+        if (stat === 'vit') HunPrVit = Math.min(130, HunPrVit + 30);
+        if (stat === 'int') HunPrInt = Math.min(130, HunPrInt + 30);
+        if (stat === 'luk') HunPrLuk = Math.min(130, HunPrLuk + 30);
+        
+        forceUpdateStatsDisplay();
+        updateStatAllocUI();
+        
+        if (statPoints <= 0) {
+            overlay.style.display = 'none';
+            setGameFreeze("off");
+            setPauseButtonDisplay(false);
+            updateSkillGrids();
+            renderHotkeyBar('attack');
+            renderHotkeyBar('support');
+            renderHotkeyBar('item');
+            addSystemLog('能力點分配完成', '#f1c40f', false, 3.0);
+        }
+    };
+}
+
+function updateStatAllocUI() {
+    document.getElementById('stat-points-remain').innerText = statPoints;
+    statList.forEach(stat => {
+        const win = document.getElementById('stat-win-' + stat);
+        if (!win) return;
+        
+        let currentVal = 0;
+        if (stat === 'str') currentVal = HunPrStr;
+        if (stat === 'agi') currentVal = HunPrAgi;
+        if (stat === 'vit') currentVal = HunPrVit;
+        if (stat === 'int') currentVal = HunPrInt;
+        if (stat === 'luk') currentVal = HunPrLuk;
+        
+        win.querySelector('.stat-val').innerText = currentVal;
+        
+        const cost = statCost[stat];
+        win.querySelector('.stat-cost').innerText = cost;
+        const btn = win.querySelector('.stat-add-btn');
+        
+        if (currentVal >= 130) {
+            btn.disabled = true;
+            btn.innerText = '已達上限';
+            btn.style.opacity = '0.5';
+            btn.style.cursor = 'not-allowed';
+        } else if (statPoints >= cost) {
+            btn.disabled = false;
+            btn.innerText = '+30';
+            btn.style.opacity = '1';
+            btn.style.cursor = 'pointer';
+        } else {
+            btn.disabled = true;
+            btn.innerText = '+30';
+            btn.style.opacity = '0.5';
+            btn.style.cursor = 'not-allowed';
+        }
+    });
+}
+
 /* ============ 初始化 ============ */
 function initGame(){
     try{
@@ -4600,15 +4914,28 @@ function initGame(){
         forceUpdateStatsDisplay();
         
         isInVillage = true;
+        
         const vBtn = document.getElementById('village-btn-container');
         if(vBtn) {
-            vBtn.classList.remove('green');
-            vBtn.classList.add('red');
-            vBtn.innerText = '離開村莊';
+            vBtn.classList.remove('red', 'green');
+            vBtn.innerText = '普隆德拉草原';
+            vBtn.style.background = '#ffffff';
+            vBtn.style.color = '#333';
+            vBtn.style.border = '2px solid #ccc';
+            vBtn.style.left = '965px';
+            vBtn.style.top = '183px';
+            vBtn.style.bottom = 'auto';
             vBtn.style.display = 'flex';
         }
+        
         const whPanel = document.getElementById('warehouse-panel');
-        if(whPanel) whPanel.style.display = 'flex';
+        if(whPanel) { whPanel.style.display = 'flex'; whPanel.style.left = '15px'; whPanel.style.bottom = '550px'; }
+        const bagPanel = document.getElementById('ui-bag-panel');
+        if(bagPanel) { bagPanel.style.display = 'flex'; bagPanel.style.left = '15px'; bagPanel.style.bottom = '102px'; }
+        
+        document.getElementById('ui-9').style.pointerEvents = 'none';
+        document.getElementById('ui-9').style.opacity = '0.5';
+        
         switchWarehouseTab('consume');
         
         setGameFreeze("off");
