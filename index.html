@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Test HunRoAKF v0.07 (RO 4th Official Logic)</title>
+<title>Test HunRoAKF v0.08 (RO 4th Official Logic)</title>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
 @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
-/* ★ 強制全螢幕預設游標，拔除所有 hover 特效 */
 * { box-sizing:border-box; user-select:none; -webkit-user-select:none; font-family:'Verdana',sans-serif; font-weight:bold; font-size:33px !important; cursor: default; }
 body { margin:0; padding:0; width:1920px; height:1080px; overflow:hidden; background:#1a1a2e; touch-action:none; }
 *:hover { filter:none !important; transform:none !important; }
@@ -22,8 +21,7 @@ body { margin:0; padding:0; width:1920px; height:1080px; overflow:hidden; backgr
 }
 .glass-panel { background:rgba(15,23,32,0.92); backdrop-filter:blur(8px); border:2px solid rgba(255,255,255,0.25); box-shadow:inset 0 2px 5px rgba(255,255,255,0.15), 0 6px 9px rgba(0,0,0,0.6); }
 .clickable-btn { outline:2px solid #ff66b2 !important; outline-offset:-2px; }
-/* ★ 保留點擊回饋（手游按壓感） */
-.clickable-btn:active, .bag-tab-btn:active, .shop-menu-btn:active, .page-btn:active, .equip-card:active, .bag-slot:active, .hotkey-slot.filled:active, #village-btn-container:active, #traveler-btn:active, .equip-action-btn:active, .traveler-page-btn:active, .traveler-qty-btn:active, .traveler-buy-btn:active, .traveler-confirm-btn:active, .traveler-page-btn-header:active {
+.clickable-btn:active, .bag-tab-btn:active, .shop-menu-btn:active, .page-btn:active, .equip-card:active, .bag-slot:active, .hotkey-slot.filled:active, #traveler-btn:active, .equip-action-btn:active, .traveler-page-btn:active, .traveler-qty-btn:active, .traveler-buy-btn:active, .traveler-confirm-btn:active, .traveler-page-btn-header:active {
     box-shadow:inset 0 6px 12px rgba(0,0,0,0.85), 0 2px 3px rgba(0,0,0,0.3) !important; filter:brightness(0.88);
 }
 
@@ -31,7 +29,6 @@ body { margin:0; padding:0; width:1920px; height:1080px; overflow:hidden; backgr
     position:relative; width:1920px; height:1080px; background-color:#1a252f;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.75) 65%, rgba(0,0,0,0.81) 100%), url('./HunBG/HunBg0.png');
     background-size:cover; background-position:center; background-repeat:no-repeat; overflow:hidden; 
-    /* ★ 拔除 transition，避免滑鼠移過去時觸發重繪抽動 */
 }
 #fade-overlay { position:absolute; inset:0; background:#000; opacity:0; pointer-events:none; z-index:9999; transition:opacity 1.5s ease-in-out; }
 
@@ -50,7 +47,6 @@ body { margin:0; padding:0; width:1920px; height:1080px; overflow:hidden; backgr
 #ui-2.expanded .status-title { display:flex; text-align:center; justify-content:center; align-items:center; cursor:pointer; }
 #monster-inline-info .status-row, #player-quick-stats .status-row { margin:3px 0; padding:9px 15px; border-radius:9px; }
 
-/* ★ 村內 ui-2：白框、Y 上限到 ui-9 上方 15px */
 #ui-2.expanded.in-village {
     left:15px !important; top:15px !important;
     width:945px !important; max-height:978px !important; height:auto !important;
@@ -61,25 +57,32 @@ body { margin:0; padding:0; width:1920px; height:1080px; overflow:hidden; backgr
     z-index:200 !important;
 }
 #ui-2.expanded.in-village .status-title { color:#fff; margin-bottom:15px; padding-bottom:9px; border-bottom:2px solid rgba(255,255,255,0.2); }
-#ui-2.expanded.in-village #player-stat-alloc-inline { display:flex !important; width:100%; flex-direction:column; gap:12px; }
+/* ★ 六素質 Y 軸間隔改為 3px */
+#ui-2.expanded.in-village #player-stat-alloc-inline { display:flex !important; width:100%; flex-direction:column; gap:3px; }
 #ui-2.expanded:not(.in-village) #player-stat-alloc-inline { display:none !important; }
 #ui-2.expanded:not(.in-village) #player-quick-stats { display:flex !important; width:100%; flex-direction:column; }
 
-/* ★ 能力點：三物件分離 */
+/* ★ 能力點：完全獨立的三大物件 */
 .stat-alloc-item { width:100%; background:rgba(255,255,255,0.05); border:2px solid #ff66b2; border-radius:12px; overflow:hidden; }
-.stat-alloc-item .sa-header { display:flex; align-items:center; justify-content:space-between; padding:12px 15px; gap:10px; }
-/* 物件 1：素質與數值 */
-.stat-alloc-item .sa-label { flex:1; display:flex; justify-content:space-between; align-items:center; cursor:pointer; padding-right:15px; }
-.stat-alloc-item .sa-name { color:#fff; font-size:28px !important; }
-.stat-alloc-item .sa-value { font-size:28px !important; }
-.stat-alloc-item .sa-base { color:#82b1ff; }
-.stat-alloc-item .sa-bonus { color:#ffffff; }
-/* 物件 2：消耗 */
-.stat-alloc-item .sa-cost { color:#2ecc71; font-size:24px !important; white-space:nowrap; flex-shrink:0; min-width:120px; text-align:center; }
-/* 物件 3：按鈕 */
-.stat-alloc-item .sa-add-btn { background:rgba(46,204,113,0.9); border:2px solid rgba(255,255,255,0.6); color:#fff; border-radius:8px; padding:6px 16px; cursor:pointer; font-size:24px !important; white-space:nowrap; flex-shrink:0; }
-.stat-alloc-item .sa-add-btn:disabled { background:rgba(100,100,100,0.6); cursor:not-allowed; opacity:0.5; }
-.stat-alloc-item .sa-detail { display:none; padding:10px 15px 14px; border-top:1px solid rgba(255,255,255,0.15); color:#ccc; font-size:22px !important; line-height:1.6; }
+.stat-alloc-item .sa-header { display:flex; align-items:center; justify-content:space-between; padding:8px 12px; gap:10px; }
+
+/* 1. 素質下拉按鈕（左） */
+.sa-dropdown-btn { flex:1; display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.3); border-radius:8px; padding:6px 15px; cursor:pointer; color:#fff; outline:none; }
+.sa-dropdown-btn:active { background:rgba(255,255,255,0.2); }
+.sa-name { color:#fff; font-size:26px !important; }
+.sa-value { font-size:26px !important; }
+.sa-base { color:#82b1ff; }
+.sa-bonus { color:#ffffff; }
+
+/* 2. 消耗（中） */
+.sa-cost { color:#2ecc71; font-size:22px !important; white-space:nowrap; flex-shrink:0; text-align:center; min-width:110px; }
+
+/* 3. 加點按鈕（右） */
+.sa-add-btn { background:rgba(46,204,113,0.9); border:2px solid rgba(255,255,255,0.6); color:#fff; border-radius:8px; padding:6px 16px; cursor:pointer; font-size:24px !important; white-space:nowrap; flex-shrink:0; }
+.sa-add-btn:disabled { background:rgba(100,100,100,0.6); cursor:not-allowed; opacity:0.5; }
+
+/* 下拉說明 */
+.stat-alloc-item .sa-detail { display:none; padding:8px 15px 12px; border-top:1px solid rgba(255,255,255,0.15); color:#ccc; font-size:22px !important; line-height:1.6; }
 .stat-alloc-item .sa-detail.open { display:block; }
 .stat-alloc-item .sa-detail .sa-d-line { display:flex; justify-content:space-between; margin:2px 0; }
 .stat-alloc-item .sa-detail .sa-d-line span:last-child { color:#f1c40f; }
@@ -129,8 +132,6 @@ body { margin:0; padding:0; width:1920px; height:1080px; overflow:hidden; backgr
 #ui-12.traveler-available { height:162px; z-index:150; animation:rainbowBorder 1.6s linear infinite; }
 #ui-12.traveler-available #traveler-btn { display:flex; background:linear-gradient(135deg, #ff4fa3 0%, #ff66b2 50%, #ff85c9 100%); box-shadow:inset 0 2px 8px rgba(255,255,255,0.45), inset 0 -3px 8px rgba(120,20,70,0.35); }
 @keyframes rainbowBorder { 0%,100%{border-color:#ff66b2;box-shadow:0 0 22px #ff66b2} 25%{border-color:#f1c40f;box-shadow:0 0 22px #f1c40f} 50%{border-color:#2ecc71;box-shadow:0 0 22px #2ecc71} 75%{border-color:#3498db;box-shadow:0 0 22px #3498db} }
-
-#village-btn-container { position:absolute; left:1440px; top:183px; width:465px; height:72px; border-radius:9px; box-shadow:inset 0 2px 5px rgba(255,255,255,0.3), 0 6px 9px rgba(0,0,0,0.4); display:none; align-items:center; justify-content:center; cursor:pointer; z-index:250 !important; color:#333; font-size:38px !important; letter-spacing:4px; background:#fff; border:2px solid #ccc; }
 
 #ui-10, #ui-11 { position:absolute; bottom:15px; width:max-content; min-width:465px; max-width:900px; min-height:72px; max-height:450px; height:auto; background:rgba(10,18,26,0.9); backdrop-filter:blur(8px); border:2px solid #ff66b2; border-radius:9px; box-shadow:inset 0 2px 5px rgba(255,255,255,0.3), 0 6px 9px rgba(0,0,0,0.4); display:flex; flex-direction:column; justify-content:flex-end; padding:6px 18px; color:#fff; pointer-events:auto; overflow:hidden; transition:max-height 0.2s; cursor:pointer; }
 #ui-10 { left:490px; z-index:75; } #ui-11 { left:965px; z-index:80; }
@@ -374,7 +375,6 @@ body.game-paused-anim .monster { opacity:0.5; filter:grayscale(1) blur(1px); }
 <div id="fade-overlay"></div>
 <div id="game-floor"></div>
 
-<!-- ★ 能力點浮動確認框 -->
 <div id="stat-confirm-popup">
     <div class="scp-text" id="stat-confirm-text">確定嗎？</div>
     <div class="scp-actions">
@@ -383,7 +383,6 @@ body.game-paused-anim .monster { opacity:0.5; filter:grayscale(1) blur(1px); }
     </div>
 </div>
 
-<!-- ★ 結算畫面 -->
 <div id="battle-settle-overlay">
     <div id="battle-settle-panel">
         <div class="bs-title" id="bs-title">戰鬥結算</div>
@@ -394,12 +393,10 @@ body.game-paused-anim .monster { opacity:0.5; filter:grayscale(1) blur(1px); }
     </div>
 </div>
 
-<!-- ★ ui-2：村內能力點 / 村外戰鬥歷程 -->
 <div id="ui-2" class="bar-container glass-panel" onclick="togglePlayerQuickStats(event)">
     <div class="bar-bg"></div>
     <div class="bar-text"><span id="ui2-bar-title">角色等級：</span><span id="HunPrLvDisplay">1</span></div>
 
-    <!-- 村外：角色資訊快捷面板 -->
     <div id="player-quick-stats" onclick="event.stopPropagation()">
         <div class="status-title player-title-color" onclick="event.stopPropagation(); togglePlayerQuickStats(event);" id="ui2-panel-title">戰鬥歷程</div>
         <div class="status-row"><span>戰鬥 Lv:</span><span id="quick-battle-lv">1</span></div>
@@ -423,7 +420,6 @@ body.game-paused-anim .monster { opacity:0.5; filter:grayscale(1) blur(1px); }
         <div class="status-row"><span>SP 道具回復量:</span><span id="quick-spitem">+ 0 %</span></div>
     </div>
 
-    <!-- ★ 村內：能力點分配面板 -->
     <div id="player-stat-alloc-inline" onclick="event.stopPropagation()">
         <div class="status-title player-title-color">角色等級</div>
         <div class="status-row" id="lv-detail-row" onclick="toggleLvDetail(event)">
@@ -442,7 +438,6 @@ body.game-paused-anim .monster { opacity:0.5; filter:grayscale(1) blur(1px); }
 <div id="ui-4" class="bar-container glass-panel"><div class="bar-bg"></div><div id="dp-bar-fill" class="bar-fill" style="width:0%;"></div><div class="bar-text"><span>ＤＰ：</span><span id="HunPrDP">0</span></div></div>
 <div id="arrow-slot" class="glass-panel clickable-btn" onclick="toggleArrowMenu(event)"><div id="arrow-slot-icon"></div><div id="arrow-slot-text">∞</div></div>
 <div id="arrow-slot-popup"></div>
-<!-- ★ ui-6：EXP（百分比/數值切換） -->
 <div id="ui-6" class="bar-container glass-panel" onclick="toggleExpDisplayMode(event)"><div class="bar-bg"></div><div id="exp-bar-fill" class="bar-fill" style="width:0%;"></div><div class="bar-text"><span>ＥＸＰ：</span><span id="exp-text">0%</span></div></div>
 <div id="ui-7" class="bar-container glass-panel"><div class="bar-bg"></div><div id="sp-bar-regen" class="bar-regen" style="width:100%; display:none; background:#a8d8ea;"></div><div id="sp-bar-fill" class="bar-fill" style="width:100%;"></div><div class="bar-text"><span>ＳＰ：</span><span><span id="HunPrSP">150</span> ／ <span id="HunPrMSP">150</span></span></div></div>
 <div id="ui-8" class="bar-container glass-panel"><div class="bar-bg"></div><div id="ap-bar-fill" class="bar-fill" style="width:0%;"></div><div class="bar-text"><span>ＡＰ：</span><span><span id="HunPrAP">0</span> ／ <span id="HunPrMAP">200</span></span></div></div>
@@ -462,7 +457,6 @@ body.game-paused-anim .monster { opacity:0.5; filter:grayscale(1) blur(1px); }
     </div>
 </div>
 
-<div id="village-btn-container" onclick="handleVillageButtonClick(event)">普德隆拉草原</div>
 <div id="ui-12" class="bottom-panel glass-panel"><div id="traveler-btn">和旅人交談</div><div class="zeny-row"><span>Zeny：</span><span id="HunPrZeny">0</span></div></div>
 <div id="ui-10" onclick="toggleLogPanelUI(event)"></div>
 <div id="ui-11" onclick="toggleLogPanelUI(event)"></div>
@@ -604,14 +598,12 @@ body.game-paused-anim .monster { opacity:0.5; filter:grayscale(1) blur(1px); }
 </div>
 
 <script>
-/* ============ 1. 核心工具 ============ */
 const $ = id => document.getElementById(id);
 const container = $('game-container');
 const playerImg = $('player-img');
 const formatNum = num => num === Infinity ? '∞' : (Math.round(num * 1000) / 1000).toString();
 const formatDef1 = num => (Math.round(num * 10) / 10).toString();
 
-/* ============ 2. 音效與 BGM ============ */
 const soundPaths = {
     hit:'./HunSound/_archer_hit.wav', crit:'./HunSound/ef_hit4.wav', concentration:'./HunSound/ac_concentration.wav', bash:'./HunSound/ef_bash.wav',
     refine1:'./HunSound/bs_refine_1.wav', refine2:'./HunSound/bs_refine_2.wav', refineSuccess:'./HunSound/bs_refine_success.wav', refineFail:'./HunSound/bs_refine_failed.wav'
@@ -681,7 +673,6 @@ $('sfx-vol-slider').addEventListener('input', function() {
     updateSoundButtonIcon();
 });
 
-/* ============ 3. 全域資料 ============ */
 let HunPrFreeze = "off", isInVillage = true, isGameOver = false, gameTime = 0, gameTimers = {}, gameTimerIdCounter = 0;
 function setGameFreeze(state) { HunPrFreeze = state; document.body.classList.toggle('game-paused-anim', state === "on"); }
 function gameSetTimeout(cb, delaySec) { const id = 'gt_' + (++gameTimerIdCounter); gameTimers[id] = { remaining: delaySec, callback: cb }; return id; }
@@ -941,12 +932,12 @@ document.addEventListener('pointerdown', e => {
     if (isInVillage && $('ui-2').classList.contains('expanded') && !$('ui-2').contains(e.target)) {
         $('ui-2').classList.remove('expanded','in-village');
     }
-    if (!e.target.closest('.sa-detail') && !e.target.closest('.sa-label') && !e.target.closest('#lv-detail') && !e.target.closest('#lv-detail-row')) {
+    if (!e.target.closest('.sa-detail') && !e.target.closest('.sa-dropdown-btn') && !e.target.closest('#lv-detail') && !e.target.closest('#lv-detail-row')) {
         document.querySelectorAll('.sa-detail').forEach(el => el.classList.remove('open'));
         const lvd = $('lv-detail'); if (lvd) lvd.classList.remove('open');
     }
 
-    const insideIds=['ui-9','ui-bag-panel','warehouse-panel','shop-equip-panel','status-modal-overlay','arrow-slot-popup','arrow-slot','item-desc-panel','equip-action-popup','ui-12','traveler-shop-panel','traveler-buy-dialog','refine-enhance-panel','village-btn-container','stat-confirm-popup','battle-settle-overlay'];
+    const insideIds=['ui-9','ui-bag-panel','warehouse-panel','shop-equip-panel','status-modal-overlay','arrow-slot-popup','arrow-slot','item-desc-panel','equip-action-popup','ui-12','traveler-shop-panel','traveler-buy-dialog','refine-enhance-panel','stat-confirm-popup','battle-settle-overlay'];
     if (!insideIds.some(id => $(id) && $(id).contains(e.target)) && !$('ui-2').contains(e.target)) {
         closeAllMajorPanels(true); closeItemDesc();
         $('ui-9').classList.remove('expanded');
@@ -1106,12 +1097,14 @@ function renderInlineStatAlloc() {
         const cur = statVals[s], cost = realStatCost[s], canBuy = getRealStatPointsRemain() >= cost && cur < REAL_STAT_MAX;
         const item = document.createElement('div'); item.className = 'stat-alloc-item';
         const detailHtml = meta.detail.map(([lbl,val]) => `<div class="sa-d-line"><span>${lbl}</span><span>${val}</span></div>`).join('');
+        
+        // 左：素質按鈕 / 中：消耗 / 右：+15
         item.innerHTML = `
             <div class="sa-header">
-                <div class="sa-label" onclick="toggleStatDetail(event,'${s}')">
+                <button class="sa-dropdown-btn" onclick="toggleStatDetail(event,'${s}')">
                     <span class="sa-name">${meta.label}:</span>
                     <span class="sa-value"><span class="sa-base">${cur}</span> + <span class="sa-bonus">0</span></span>
-                </div>
+                </button>
                 <div class="sa-cost">消耗 ${cost} 點</div>
                 <button class="sa-add-btn" ${canBuy?'':'disabled'} onclick="openStatConfirm('add','${s}',this)">+15</button>
             </div>
@@ -2351,12 +2344,6 @@ function updateUI() {
     
     if ($('M_Lv')) $('M_Lv').innerText = MobLv; 
     if ($('M_RankDisplay')) $('M_RankDisplay').innerText = '1';
-    if ($('ui-1') && $('ui-1').classList.contains('expanded')) {
-        const hp = Math.round(MobLv * 30), hDef = MobLv * 0.6, sDef = Math.floor(MobLv * 0.9);
-        if($('M_ShowLv')) $('M_ShowLv').innerText = MobLv; if($('M_Hp')) $('M_Hp').innerText = $('M_MaxHp').innerText = hp;
-        if($('M_DefVal')) $('M_DefVal').innerText = formatDef1((1 - (4000+hDef)/(4000+hDef*10))*100) + ' %'; if($('M_DefRaw')) $('M_DefRaw').innerText = `${formatDef1(sDef)} + ${formatDef1(hDef)}`;
-        if($('M_Res')) $('M_Res').innerText = MobLv * 6; if($('M_MRes')) $('M_MRes').innerText = MobLv * 3; if($('M_Atk')) $('M_Atk').innerText = Math.round(MobLv * 1.8);
-    }
 }
 function renderStatusGrids() {
     const str = playerBuffs.map(b=>b.id).join(',') + '|' + playerDebuffs.map(d=>d.id).join(',');
@@ -2497,14 +2484,7 @@ let pendingVillageAction = null;
 function showVillageConfirm(txt, act) { $('village-confirm-text').innerText = txt; pendingVillageAction = act; $('village-confirm-dialog').style.display = 'flex'; }
 function closeVillageConfirm() { $('village-confirm-dialog').style.display = 'none'; pendingVillageAction = null; }
 function confirmVillageAction() { const act = pendingVillageAction; closeVillageConfirm(); if (act) act(); }
-function handleVillageButtonClick(e) {
-    if (e) e.stopPropagation();
-    if (isInVillage) {
-        showVillageConfirm('確定出村戰鬥嗎？', leaveVillage);
-    } else {
-        showVillageConfirm('確定回村嗎？（帶出 60% 經驗）', () => settleBattle('return'));
-    }
-}
+
 function screenFadeTransition(cb, skipFade) {
     if (skipFade) { if (cb) cb(); return; }
     const ov = $('fade-overlay'); ov.style.opacity = '1';
@@ -2521,9 +2501,6 @@ function enterVillage(skipFade) {
         container.style.backgroundImage = `linear-gradient(to bottom, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.75) 65%, rgba(0,0,0,0.81) 100%), url('./HunBG/HunBg0.png')`;
         playBgm('village');
         $('ui-2').classList.remove('expanded','in-village');
-        const vBtn = $('village-btn-container');
-        vBtn.innerText = '普德隆拉草原';
-        Object.assign(vBtn.style, { background:'#fff', color:'#333', border:'2px solid #ccc', left:'1440px', top:'183px', bottom:'', display:'flex' });
         updateBagWarehouseBtn();
         recalcMaxHP();
         
@@ -2532,24 +2509,6 @@ function enterVillage(skipFade) {
         
         updateUI();
     }, skipFade);
-}
-function leaveVillage() {
-    screenFadeTransition(() => {
-        isInVillage = false;
-        $('warehouse-panel').style.display = 'none';
-        playBgm('battle');
-        $('ui-2').classList.remove('expanded','in-village');
-        updateBagWarehouseBtn();
-        syncRealStatsToBattle();
-        recalcMaxHP();
-        HunPrHP = HunPrMHP; HunPrSP = HunPrMSP;
-        MobLv = 1; MobSpawnEventCount = 0; MobSpawnTimerAcc = 0;
-        container.style.backgroundImage = `linear-gradient(to bottom, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.75) 65%, rgba(0,0,0,0.81) 100%), url('./HunBG/HunBg1.png')`;
-        const vBtn = $('village-btn-container');
-        vBtn.innerText = '回村莊（60%）';
-        Object.assign(vBtn.style, { background:'#fff', color:'#333', border:'2px solid #ccc', left:'1440px', top:'183px', bottom:'', display:'flex' });
-        spawnMonster();
-    });
 }
 
 function triggerSkillSelection() {
@@ -2658,9 +2617,6 @@ window.addEventListener('DOMContentLoaded', () => {
     isInVillage = true; isGameOver = false;
     container.style.backgroundImage = `linear-gradient(to bottom, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.75) 65%, rgba(0,0,0,0.81) 100%), url('./HunBG/HunBg0.png')`;
     playBgm('village');
-    const vBtn = $('village-btn-container');
-    vBtn.innerText = '普德隆拉草原';
-    Object.assign(vBtn.style, { background:'#fff', color:'#333', border:'2px solid #ccc', left:'1440px', top:'183px', bottom:'', display:'flex' });
     updateBagWarehouseBtn();
     
     HunPrHP = HunPrMHP; HunPrSP = HunPrMSP;
